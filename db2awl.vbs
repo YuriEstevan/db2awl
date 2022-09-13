@@ -1,4 +1,5 @@
 '******************************************************************************'
+<<<<<<< HEAD
 ' File        : db2awl.vbs
 ' Author      : yuriestevan@gmail.com
 ' Date        : 2022/09/13
@@ -32,3 +33,30 @@ If WScript.Arguments.Count > 0 Then
 
 msgbox (wscript.arguments.count)
 
+=======
+' File	: db2awl.vsb
+' Date	: 2022.09.13
+'******************************************************************************'
+Option Explicit
+
+Dim sArg
+
+For Each sArg In Wscript.Arguments
+	Wscript.Echo sArg, IsValidFile(sArg)
+Next 'sArg
+
+
+Private Function IsValidFile( sFilePath )
+	Dim bIsValidFile : bIsValidFile = False
+
+	With CreateObject("Scripting.FileSystemObject")
+		If ( .FileExists(sFilePath) ) Then
+			If (InStr( 1, .GetExtensionName(sFilePath), "db", vbTextCompare ) > 0) Then
+				bIsValidFile = True
+			End If
+		End If
+	End With
+
+	IsValidFile = bIsValidFile
+End Function
+>>>>>>> feature/check-if-files-is-valid
