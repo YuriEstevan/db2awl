@@ -1,0 +1,2 @@
+msgbox (wscript.arguments.count)
+
