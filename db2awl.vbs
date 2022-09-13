@@ -4,11 +4,11 @@
 '******************************************************************************'
 Option Explicit
 
-Dim oArg
+Dim sArg
 
-For Each oArg In Wscript.Arguments
-	Wscript.Echo oArg, IsValidFile(oArg)
-Next 'oArgs
+For Each sArg In Wscript.Arguments
+	Wscript.Echo sArg, IsValidFile(sArg)
+Next 'sArg
 
 
 Private Function IsValidFile( sFilePath )
