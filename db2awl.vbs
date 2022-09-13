@@ -1,34 +1,26 @@
 '******************************************************************************'
-' File        : db2awl.vbs
-' Author      : yuriestevan@gmail.com
-' Date        : 2022/09/13
-' Description : Convert .db to .awl
-' Revision    : 0.0
-' Date      Author  Description
-' ------------------------------------------------------------------------------
-' 22/09/13  yes     First commit
-'
+' File	: db2awl.vbs
+' Date	: 2022.09.13
 '******************************************************************************'
+Option Explicit
 
-If WScript.Arguments.Count > 0 Then
-    Const xlCellTypeLastCell = 11
-    Dim file
-    Dim fso
-    Dim dict
-    Dim objWb
-    Dim objWs
-    Dim objXl
-    Dim iColTagName
-    Dim iColDescription
-    Dim iColAddress
+Dim sArg
+
+For Each sArg In Wscript.Arguments
+	Wscript.Echo sArg, IsValidFile(sArg)
+Next 'sArg
 
 
+Private Function IsValidFile( sFilePath )
+	Dim bIsValidFile : bIsValidFile = False
 
+	With CreateObject("Scripting.FileSystemObject")
+		If ( .FileExists(sFilePath) ) Then
+			If (InStr( 1, .GetExtensionName(sFilePath), "db", vbTextCompare ) > 0) Then
+				bIsValidFile = True
+			End If
+		End If
+	End With
 
-
-
-
-
-
-msgbox (wscript.arguments.count)
-
+	IsValidFile = bIsValidFile
+End Function
