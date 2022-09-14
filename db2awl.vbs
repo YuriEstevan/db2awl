@@ -59,6 +59,7 @@ Private Function ConvertDbToAwl( ByVal sFilePath )
     With CreateObject("ADODB.Stream")
         .Type = adTypeText
         .Mode = adModeReadWrite
+        .Charset = "windows-1252"
         .Open
         .Position = 0
         .WriteText sText
